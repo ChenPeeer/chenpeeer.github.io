@@ -1,0 +1,295 @@
+==============初级===============
+CSS(Cascading Style Sheet)
+语法:
+选择器 {
+	属性: 属性值;
+	属性: 属性值;
+}
+
+
+选择器类别：
+简单选择器:(元素/id/class)
+组合选择器：
+伪类选择器：
+伪元素选择器：
+属性选择器：
+
+简单选择器:
+元素选择器:
+	元素 {}
+id选择器：
+	.id {}
+类选择器:
+	#class {}
+通用选择器:
+	* {}
+分组选择器:
+	h1, h2, p {}
+	
+	
+CSS位置:
+外部css:<link rel="stylesheet" type="text/css" href="test.css">
+内部css:<style type="text/css">...</style>
+行内css:<. style="..."></.>
+
+层叠顺序:
+1.行内css
+2.外部css与内部css按顺序后样式覆盖前样式
+3.浏览器默认样式
+
+css注释:
+/*注释内容*/
+
+css颜色:
+1.颜色名(140+种)
+2.rgb/hex/hsl//rgba/hsla
+rgb(255,99,71)
+#ff6347
+hsl(9%,100%,64%)
+rgba(255,99,71,0.5)
+hsla(9%,100%,64%,0.5)
+
+背景：
+background-color: rgba(255,0,0,0.5);
+background-image: url("test.gif");
+背景重复 background-repeat: repeat|repeat-x|repeat-y|no-repeat|inherit;
+background-position: 水平left|center|right 竖直top|center|bottom;
+background-position: 水平起点百分比x% 竖直起点百分比y%;
+background-position: 水平起点像素xpos 垂直起点像素ypos;
+background-position: inherit;
+
+背景附着background-attachmen: scroll(相对元素静止)|fixed(相对视口固定)|local|inherit;
+背景大小background-size: 宽px 高px|宽百分比% 高百分比%|cover(填充)|contain(包含)
+
+背景属性简写：
+background: background-color background-image background-repeat background-attachment background-position
+属性值之一缺失不要紧
+
+
+边框:
+设置一个值:全部
+设置两个值:上下 左右
+设置三个值:上 左右 下
+设置四个值:上 右 下 左
+
+边框样式:
+border-style: none|hidden|solid|dashed|dotted|double|groove(边缘凹)|ridge(边缘凸)|inset(洼地)|outset(高原)|inherit
+边框宽度:
+border-width: 1(px/pt/cm/em);
+border-width: thin|medium|thick;
+边框颜色:
+border-color: 颜色名|#ffffff|rgb(255,0,0)|hsl(0,100%,50%)|transparent
+边框属性简写：
+border-left|right|top|bottom-color|style|width|radius: ...;
+border-left|right|top|bottom: ...;
+border-color|style|width|radius: ...;
+
+外边距:
+1到4个值
+margin[-left|right|top|bottom]: auto(自动居中)|length(px/pt/cm)|%(以包含元素宽度的百分比计外边距)|inherit
+允许负值
+
+外边距合并:
+外边距合并指的是，当两个【垂直】外边距相遇时，它们将形成一个外边距。
+合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。
+注释：只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。
+
+内边距：
+padding[-left|right|top|bottom]: legnth(px/pt/cm)|%以包含元素宽度的百分比计的内边距|inhrit
+【不允许负值】
+CSS width 属性指定元素内容区域的宽度。内容区域是元素（盒模型）的内边距、边框和外边距内的部分。
+因此，如果元素拥有指定的宽度，则添加到该元素的内边距会添加到元素的总宽度中。这通常是不希望的结果。
+|margin|border|padding|<--(content element)width-->|padding|border|margin|
+
+高度&宽度：
+height 和 width 属性不包括内边距、边框或外边距
+height|width: auto|length(px/pt/cm)|%(包含块的百分比)|initial(默认)|inherit
+最大|最小-高度|宽度
+max|min-heigth|width: none|length|%
+一般我们在布局时，不想要元素的宽高度限定死，并且想要它的实际宽高度随其本身内容自适应，但又不想宽高度过大过小破坏整体布局，这个时候就会应用到max|min-width|height限制元素的最大最小宽高度，元素实际宽高度在min-width|height~max-width|heigth之间。
+
+
+盒子模型：
+-------------------------------------------------
+|                 margin                        |
+|    --------------------------------------     |
+|    |           border                   |     |
+|    |    ----------------------------    |     |
+|    |    |         padding          |    |     |
+|    |    |    -----------------     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |  height            |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    |               |     |    |     |
+|    |    |    -----width-------     |    |     |
+|    |    |                          |    |     |
+|    |    ----------------------------    |     |
+|    |                                    |     |
+|    --------------------------------------     |
+|                                               |
+-------------------------------------------------
+在 CSS 中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。
+
+
+
+
+轮廓outline：
+轮廓outline和边框border不一样：
+轮廓是在元素边框之外绘制的，并且可能与其他内容重叠。
+同样，轮廓也不是元素尺寸的一部分；元素的总宽度和高度不受轮廓线宽度的影响。
+
+与border类似，outline可有如下：
+除非设置了 outline-style 属性，否则其他轮廓属性都不会有任何作用！
+
+outline-style(与border相同的属性值):dotted|dashed|solid|double|groove|ridge|inset|outset|none|hidden
+outline-offset(轮廓与边框之间的空间，透明):10px;
+outline-color:颜色名|#ffffff|rgb(255,0,0)|hsl(0,100%,50%)|invert(自动与背景反色,chrome暂时不支持)
+outline-width:thin(1px)|medium(3px)|thick(5px)|length(px/pt/cm/em)
+outline(简写):outline-width outline-style(必需) outline-color;
+
+
+
+
+文本:
+文本颜色与背景色:
+color:颜色名|#ffffff|rgb(255,0,0)
+background-color:颜色名|#ffffff|rgb(255,0,0)
+
+文本对齐:
+text-align(水平对齐):left|center|right|justify(分散两端对齐)
+文本方向:
+direction:ltr|rtl;
+unicode-bidi:设置或返回是否应重写文本来支持同一文档中的多种语言
+元素在文字中垂直对齐(该属性添加在非文字的元素中):
+如，文字中有一张图片。
+vertical-align:bottom(底对齐)|middle(中间对齐)|top(顶对齐);
+
+文本装饰线:
+text-decoration:none|overline(上划线)|line-through(删除线)|underline(下划线);
+
+文本大小写转换:
+text-transform:none|uppercase|lowercase|capitalize;
+
+文字间距:
+首行缩进:text-indent:10px;
+字母间距:letter-spacing:10px;
+词间距:word-spacing:10px;
+行间距:line-height:10px|百分比%
+空白方案:white-space:normal|pre|nowrap(不换行除非<br/>)|pre-wrap|pre-line(合并空白，保留换行符)|inherit
+
+文字阴影:
+text-shadow:水平偏移像素数 竖直偏移像素数 模糊像素数 阴影颜色;
+
+字体:
+通用系列(5个):serif(衬线),sans-serif(无衬线),monospace(等宽),cursive(手写),fantasy(装饰/俏皮).
+font-family 属性应包含多个字体名称作为“后备”系统，以确保浏览器/操作系统之间的最大兼容性。请以您需要的字体开始，并以通用系列结束（如果没有其他可用字体，则让浏览器选择通用系列中的相似字体）。字体名称应以逗号分隔。
+注释：如果字体名称不止一个单词，则必须用引号引起来，例如："Times New Roman"。
+font-family: "Times New Roman", Times, serif;
+
+字体样式:
+font-style: normal|italic;
+字体粗细:
+font-weight: normal|bold;
+字体变形:
+font-variant: normal|small-caps(小的大写字母);
+字体大小:
+font-size: 16px|1em|百分比%|1vm(view port,视口宽度);
+
+使用Google字体:
+如果您不想使用 HTML 中的任何标准字体，则可以使用 Google Fonts API 向页面添加数百种其他字体。
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<style>
+	body {
+	  font-family: "Sofia";
+	  font-size: 22px;
+	}
+</style>
+</head>
+
+字体简写:
+font: font-style font-variant font-weight font-size(必需) font-family(必需);
+
+
+超链接样式:
+链接可以设置任何css样式
+超链接的四种状态:
+a:link {}正常的，未访问
+a:visited {}访问过的
+a:hover {}鼠标悬浮
+a:active {}鼠标点击按下
+
+
+列表样式：
+无序list-style-type: disc(实心圆)|circle(空心圆)|square(实心方)
+有序list-style-type:demical(阿拉伯数字)|lower-alpha(小写英文字母)|upper-alpha(大写英文字母)|lower-roman(小写罗马字母)|upper-roman(大写罗马字母)
+list-style-image: url("sqpurple.gif");
+list-style-position(列表项标记关于列表项的位置): outside|inside;
+列表简写:list-style: list-style-type list-style-position list-style-image;
+
+
+表格样式:
+border: 线宽px 样式 颜色;
+全宽表格:
+width: 100%
+合并边框:
+border-collapse: separate|collapse;
+表格边框间距:
+(边框分离时有效)border-spacing: 水平间距像素数 竖直间距像素数;
+标题位置:
+caption-side: top|bottom|inherit
+表格文字对齐:
+水平text-align:left|center|right;
+竖直vertical-align:top|middle|bottom;
+强调鼠标悬浮位置的表格的一行:
+tr:hover {background-color: #f5f5f5;}
+交替行背景颜色(使用nth-child()选择器):
+tr:nth-child(even) {background-color: #f5f5f5;}
+响应式表格:
+table {
+	overflow-x: auto;
+}
+显隐空单元格的边框和背景:
+(边框分离时有效)empty-cells:show|hide|inherit;
+表格布局:
+table-layout:auto(包裹内容)|fixed(固定，由列宽&行高决定)|inherit
+
+==============中级===============
+display属性:
+display规定如何显示元素，每个html元素都有一个默认的display,值为block或inline.
+块级元素(block element):【总是从新行开始，并占据可用的全部宽度】。
+内联元素(inline element):【不从新行开始，仅占据所需的宽度】。
+
+隐藏元素(不再占据位置)display:none;
+隐藏元素(仍占据位置)visibility:hidden;
+
+max-width与min-width与width:
+width是固定的，max-width和min-width是适应的
+优先级:min-width>max-width>width
+min-width和max-width不应该同时出现，min-width会覆盖掉max-width.
+设置max-width时：元素实际宽度=min{窗口宽度, max-width}
+设置min-width时：元素实际宽度=max{窗口宽度, min-width}
+
+定位：
+用position设置定位方式;static/fixed/sticky/relative/absolute
+用top/bottom/left/right设置具体值。
+static：按Html正常流定位，且不受top/bottom/left/right影响。
+fixed:相对于视口固定,即使滚动页面，它也始终位于同一位置。
+sticky:根据用户的滚动位置进行定位。粘性元素根据滚动位置在相对（relative）和固定（fixed）之间切换。起先它会被相对定位，直到在视口中遇到给定的偏移位置为止 - 然后将其“粘贴”在适当的位置（比如 position:fixed）。
+relative:相对于其【正常默认位置】进行定位。
+absolute:相对于最近的定位祖先元素进行定位,如果绝对定位的元素没有祖先，它将使用文档主体（body），并随页面滚动一起移动。
+z-index:定位元素时，可能会产生重叠。用z-index可以调整元素的叠放顺序。z-index为整数，越大越在顶，越小越在底。
+
+溢出overflow:
+overflow用来指定在【元素的【内容】】太大而无法放入指定区域时是剪裁内容还是添加滚动条。
+overflow属性仅适用于具有指定高度的块元素。
+overflow:visible|hidden|scroll|auto
+visible:溢出不裁剪，内容在框外渲染
+hidden:溢出裁剪，框外内容将不可见
+scroll:强制添加滚动条
+auto:需要时添加滚动条
+overflow-x和overflow-y可单独指定水平方向和竖直方向上的溢出设置
